@@ -1,40 +1,31 @@
 import { component$ } from "@builder.io/qwik";
-import { QwikLogo } from "../icons/qwik";
-import styles from "./header.module.css";
-
+import { LTMLogo } from "../icons/ltm";
+import { Link } from "@builder.io/qwik-city";
+// Coming soon, game selection
+// <li>
+//   <a
+//     href="https://qwik.builder.io/docs/components/overview/"
+//     target="_blank"
+//   >
+//     SSBU
+//   </a>
+// </li>
 export default component$(() => {
   return (
-    <header class={styles.header}>
-      <div class={["container", styles.wrapper]}>
-        <div class={styles.logo}>
-          <a href="/" title="qwik">
-            <QwikLogo height={50} width={143} />
-          </a>
-        </div>
-        <ul>
+    <header class="bg-black">
+      <div class={["container", "flex flex-wrap justify-between gap-8"]}>
+        <a href="/" title="qwik" class="flex h-12">
+          <LTMLogo />
+        </a>
+        <ul class="flex flex-col gap-4 p-0">
           <li>
-            <a
-              href="https://qwik.builder.io/docs/components/overview/"
-              target="_blank"
-            >
-              Docs
-            </a>
+            <Link href="/matchups">Matchups</Link>
           </li>
           <li>
-            <a
-              href="https://qwik.builder.io/examples/introduction/hello-world/"
-              target="_blank"
-            >
-              Examples
-            </a>
+            <Link href="/clips">Clips</Link>
           </li>
           <li>
-            <a
-              href="https://qwik.builder.io/tutorial/welcome/overview/"
-              target="_blank"
-            >
-              Tutorials
-            </a>
+            <Link href="/tutorials">Tutorials</Link>
           </li>
         </ul>
       </div>
