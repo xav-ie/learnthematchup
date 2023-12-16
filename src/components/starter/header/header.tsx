@@ -40,7 +40,7 @@ export default component$(() => {
   const isRoot = pathnameParts.length === 0;
 
   return (
-    <header>
+    <header class="bg-purple-500">
       <div class={["container", "flex flex-wrap justify-between gap-8"]}>
         <Link
           href="/"

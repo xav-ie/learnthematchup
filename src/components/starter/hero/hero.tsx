@@ -19,7 +19,7 @@ const Scroller = component$(() => {
   useVisibleTask$(() => {
     if (outputRef.value) {
       if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        outputRef.value.setAttribute("data-animated", "true");
+        // outputRef.value.setAttribute("data-animated", "true");
       }
     }
   });
@@ -64,8 +64,11 @@ export default component$(() => {
       outputRef.value.classList.add("opacity-100");
       // then we shrink to size of screen - height of header --
       // or the absoluteMinimumHeight for really short screens
+      const viewportHeight = window.visualViewport
+        ? window.visualViewport.height
+        : window.innerHeight;
       componentHeight.value = `${Math.max(
-        window.innerHeight - headerRect.height,
+        viewportHeight - headerRect.height,
         absoluteMinimumHeight,
       )}px`;
       // starting small would have meant initial flash of content
@@ -76,7 +79,7 @@ export default component$(() => {
   return (
     <div
       class={[
-        `flex flex-col items-center justify-between gap-8  opacity-0 transition-[height,opacity] duration-500`,
+        `duration-500i flex flex-col items-center justify-between  gap-8 bg-red-500 opacity-0 transition-[height,opacity]`,
       ]}
       style={{
         height: componentHeight.value,

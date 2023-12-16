@@ -3,7 +3,7 @@ export const LTMLogo = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 232 28"
-    class="max-h-full max-w-full border-b-4 border-inherit"
+    class="h-full max-h-full max-w-full border-b-4 border-inherit"
   >
     <path
       fill="inherit"
