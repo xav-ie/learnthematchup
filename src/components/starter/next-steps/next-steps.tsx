@@ -43,7 +43,7 @@ export default component$(() => {
   );
 
   return (
-    <div class="container container-purple container-center">
+    <div class="container-purple container-center container">
       <h2>
         Time for a
         <br />
@@ -64,15 +64,12 @@ export default component$(() => {
         />
       </div>
       {gettingStartedStep.value + 1 < GETTING_STARTED_STEPS.length ? (
-        <button class="button-dark" onClick$={() => gettingStartedStep.value++}>
+        <button onClick$={() => gettingStartedStep.value++}>
           Continue with Step {gettingStartedStep.value + 2} of{" "}
           {GETTING_STARTED_STEPS.length}
         </button>
       ) : (
-        <button
-          class="button-dark"
-          onClick$={() => (gettingStartedStep.value = 0)}
-        >
+        <button onClick$={() => (gettingStartedStep.value = 0)}>
           Re-Start
         </button>
       )}

@@ -19,7 +19,11 @@ const Scroller = component$(() => {
   useVisibleTask$(() => {
     if (outputRef.value) {
       if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        // outputRef.value.setAttribute("data-animated", "true");
+        const ul = outputRef.value.querySelector("ul");
+        const lis = ul?.querySelectorAll("li");
+        const fragment = document.createDocumentFragment();
+        lis?.forEach((li) => fragment.appendChild(li.cloneNode(true)));
+        ul?.appendChild(fragment);
       }
     }
   });
@@ -27,15 +31,6 @@ const Scroller = component$(() => {
   return (
     <div class="scroller" ref={outputRef}>
       <ul>
-        <li>Smash</li>
-        <li>Tekken 7</li>
-        <li>Nick All Stars</li>
-        <li>Street Fighter V</li>
-        <li>Mortal Kombat 11</li>
-        <li>Dragon Ball FighterZ</li>
-        <li>Soulcalibur VI</li>
-        <li>Guilty Gear Strive</li>
-        <li>More soon!</li>
         <li>Smash</li>
         <li>Tekken 7</li>
         <li>Nick All Stars</li>
@@ -67,6 +62,7 @@ export default component$(() => {
       const viewportHeight = window.visualViewport
         ? window.visualViewport.height
         : window.innerHeight;
+
       componentHeight.value = `${Math.max(
         viewportHeight - headerRect.height,
         absoluteMinimumHeight,
@@ -79,7 +75,7 @@ export default component$(() => {
   return (
     <div
       class={[
-        `duration-500i flex flex-col items-center justify-between  gap-8 bg-red-500 opacity-0 transition-[height,opacity]`,
+        `flex flex-col items-center justify-between gap-8 opacity-0 transition-[height,opacity] duration-500`,
       ]}
       style={{
         height: componentHeight.value,
@@ -93,7 +89,7 @@ export default component$(() => {
           <span class="highlight">insights</span>.
         </h1>
         <p>SSBU for now, more games coming soon!</p>
-        <Link href="/games/ssbu" class="button button-dark">
+        <Link href="/games/ssbu" class="button">
           Explore Matchups
         </Link>
       </div>

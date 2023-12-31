@@ -69,16 +69,30 @@ h3 {
 }
 
 /* BUTTONS and LINKS----------------------------- */
+/*behavior*/
+a:hover,
+button:hover {
+  transform: translateY(-1%);
+  cursor: pointer;
+}
+
+a:active,
+button:active {
+  transform: translateY(5%);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 4px solid theme("colors.foregroundAccent.500");
+}
+
+/*styles*/
 a {
   color: theme("colors.foregroundAccent.500");
 }
 a:hover {
   color: theme("colors.backgroundAccent.500");
-}
-a:focus-visible,
-button:focus-visible,
-input:focus-visible {
-  outline: 4px solid theme("colors.foregroundAccent.500");
 }
 
 a.button,
@@ -97,13 +111,8 @@ button {
 
 a.button:hover,
 button:hover {
-  background: theme("colors.backgroundAccent.500");
-  color: theme("colors.foregroundAccent.700");
-}
-
-a:active,
-button:active {
-  transform: translateY(2.5px);
+  background: theme("colors.backgroundAccent.600");
+  color: theme("colors.foregroundAccent.800");
 }
 
 a.button.button-small,
@@ -124,11 +133,6 @@ button.button-small {
   max-width: min(100%, 800px);
 }
 
-.scroller[data-animated="true"] {
-  overflow: hidden;
-  mask: linear-gradient(90deg, transparent, white 20% 80%, transparent);
-}
-
 .scroller ul {
   @apply flex w-full list-none flex-wrap py-4;
   --item-gap: 1rem;
@@ -136,11 +140,22 @@ button.button-small {
   gap: var(--item-gap);
 }
 
-.scroller[data-animated="true"] ul {
-  @apply w-max flex-nowrap justify-start;
-  animation: scroll 16s infinite linear;
-  animation-fill-mode: forwards;
-  will-change: transform;
+@media (prefers-reduced-motion: no-preference) {
+  .scroller ul {
+    @apply w-max flex-nowrap justify-start;
+    animation: scroll 16s infinite linear;
+    animation-fill-mode: forwards;
+    will-change: transform;
+  }
+
+  .scroller {
+    background: blue;
+    outline: 3px solid yellow;
+    border: 1px solid green;
+    overflow: hidden;
+    /* mask: linear-gradient(90deg, transparent, white 20% 80%, transparent);*/
+  }
+  /*is there a way to duplicate the children only with css?*/
 }
 
 .scroller ul li {

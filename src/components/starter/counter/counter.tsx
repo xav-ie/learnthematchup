@@ -14,19 +14,9 @@ export default component$(() => {
 
   return (
     <div class={styles["counter-wrapper"]}>
-      <button
-        class="button-dark button-small"
-        onClick$={() => setCount(count.value - 1)}
-      >
-        -
-      </button>
+      <button onClick$={() => setCount(count.value - 1)}>-</button>
       <Gauge value={count.value} />
-      <button
-        class="button-dark button-small"
-        onClick$={() => setCount(count.value + 1)}
-      >
-        +
-      </button>
+      <button onClick$={() => setCount(count.value + 1)}>+</button>
     </div>
   );
 });
