@@ -24,6 +24,9 @@ const Scroller = component$(() => {
         const fragment = document.createDocumentFragment();
         lis?.forEach((li) => fragment.appendChild(li.cloneNode(true)));
         ul?.appendChild(fragment);
+        // We must physically re-render due to safari optimizing too much and not
+        // re-calculating animations
+        ul?.replaceWith(ul.cloneNode(true));
       }
     }
   });
