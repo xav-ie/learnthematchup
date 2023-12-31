@@ -76,7 +76,7 @@ export default component$(() => {
   });
 
   return (
-    <div class="h-[100vh]">
+    <div class="h-screen">
       <div
         class={[
           `flex flex-col items-center justify-between gap-8 opacity-0 transition-[height,opacity] duration-500`,
