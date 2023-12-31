@@ -76,27 +76,29 @@ export default component$(() => {
   });
 
   return (
-    <div
-      class={[
-        `flex flex-col items-center justify-between gap-8 opacity-0 transition-[height,opacity] duration-500`,
-      ]}
-      style={{
-        height: componentHeight.value,
-      }}
-      ref={outputRef}
-    >
-      <div>{/*dummy*/}</div>
-      <div class="container flex flex-col items-center gap-4">
-        <h1 class="text-center">
-          Your go-to <span class="highlight">source</span> for game matchup{" "}
-          <span class="highlight">insights</span>.
-        </h1>
-        <p>SSBU for now, more games coming soon!</p>
-        <Link href="/games/ssbu" class="button">
-          Explore Matchups
-        </Link>
+    <div class="h-[100vh]">
+      <div
+        class={[
+          `flex flex-col items-center justify-between gap-8 opacity-0 transition-[height,opacity] duration-500`,
+        ]}
+        style={{
+          height: componentHeight.value,
+        }}
+        ref={outputRef}
+      >
+        <div>{/*dummy*/}</div>
+        <div class="container flex flex-col items-center gap-4">
+          <h1 class="text-center">
+            Your go-to <span class="highlight">source</span> for game matchup{" "}
+            <span class="highlight">insights</span>.
+          </h1>
+          <p>SSBU for now, more games coming soon!</p>
+          <Link href="/games/ssbu" class="button">
+            Explore Matchups
+          </Link>
+        </div>
+        <Scroller />
       </div>
-      <Scroller />
     </div>
   );
 });
