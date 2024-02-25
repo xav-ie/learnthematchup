@@ -64,8 +64,11 @@ export default component$(() => {
       outputRef.value.classList.add("opacity-100");
       // then we shrink to size of screen - height of header --
       // or the absoluteMinimumHeight for really short screens
+      const viewportHeight = window.visualViewport
+        ? window.visualViewport.height
+        : window.innerHeight;
       componentHeight.value = `${Math.max(
-        window.innerHeight - headerRect.height,
+        viewportHeight - headerRect.height,
         absoluteMinimumHeight,
       )}px`;
       // starting small would have meant initial flash of content

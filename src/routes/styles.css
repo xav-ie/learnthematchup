@@ -130,9 +130,10 @@ button.button-small {
 }
 
 .scroller ul {
-  @apply flex w-full list-none flex-wrap;
+  @apply flex w-full list-none flex-wrap py-4;
   --item-gap: 1rem;
-  column-gap: var(--item-gap);
+  --item-gap-half: calc(var(--item-gap) / 2);
+  gap: var(--item-gap);
 }
 
 .scroller[data-animated="true"] ul {
