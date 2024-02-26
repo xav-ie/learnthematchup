@@ -1,18 +1,10 @@
 import { component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
 import { Link } from "@builder.io/qwik-city";
-
-function getMinContentHeight(element: Element) {
-  const clone = element.cloneNode(true) as HTMLElement;
-  clone.style.height = "min-content";
-  clone.style.position = "absolute";
-  clone.style.visibility = "hidden";
-
-  document.body.appendChild(clone);
-  const height = clone.clientHeight;
-  document.body.removeChild(clone);
-
-  return height;
-}
+// load the global class and apply to page
+import './hero.module.css'
+// load the class selectors, because qwik transforms them
+// eg: .gridBody => ._gridBody_fdscc1234js
+import styles from './hero.module.css'
 
 const Scroller = component$(() => {
   const outputRef = useSignal<Element>();
@@ -47,41 +39,26 @@ const Scroller = component$(() => {
 
 export default component$(() => {
   const outputRef = useSignal<Element>();
-  // first, we set to value we know is bigger than screen
-  const componentHeight = useSignal<string>("100vh");
 
-  useVisibleTask$(() => {
-    const header = document.querySelector("header");
-    if (outputRef.value && header) {
-      // we want to measure the natural height of the Element
-      const absoluteMinimumHeight = getMinContentHeight(outputRef.value);
-      const headerRect = header.getBoundingClientRect();
+  useVisibleTask$(({ cleanup }) => {
+    document.body.classList.add(styles.gridBody)
+    if (outputRef.value) {
       outputRef.value.classList.add("opacity-100");
-      // then we shrink to size of screen - height of header --
-      // or the absoluteMinimumHeight for really short screens
-      const viewportHeight = window.visualViewport
-        ? window.visualViewport.height
-        : window.innerHeight;
-      componentHeight.value = `${Math.max(
-        viewportHeight - headerRect.height,
-        absoluteMinimumHeight,
-      )}px`;
-      // starting small would have meant initial flash of content
-      // below element, then growing to size, but we don't want any of that
     }
+    cleanup(() => {
+      document.body.classList.remove(styles.gridBody)
+
+    })
   });
 
   return (
     <div
       class={[
-        `flex flex-col items-center justify-between gap-8  opacity-0 transition-[height,opacity] duration-500`,
+        `flex flex-col h-full items-center justify-between gap-8 pt-4 pb-8 opacity-0 transition-[height,opacity] duration-500`,
       ]}
-      style={{
-        height: componentHeight.value,
-      }}
       ref={outputRef}
     >
-      <div>{/*dummy*/}</div>
+      <div>{/*dummy for spacing*/}</div>
       <div class="container flex flex-col items-center gap-4">
         <h1 class="text-center">
           Your go-to <span class="highlight">source</span> for game matchup{" "}
