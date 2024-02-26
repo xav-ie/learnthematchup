@@ -45,8 +45,12 @@ export default component$(() => {
   useVisibleTask$(() => {
     if (outputRef.value) {
       outputRef.value.classList.add("opacity-100");
+      outputRef.value.classList.remove("opacity-0");
     }
-  });
+  },
+    { strategy: 'document-ready' }
+  );
+
 
   return (
     <div
