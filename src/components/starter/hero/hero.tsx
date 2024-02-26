@@ -1,10 +1,5 @@
 import { component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
 import { Link } from "@builder.io/qwik-city";
-// load the global class and apply to page
-import './hero.module.css'
-// load the class selectors, because qwik transforms them
-// eg: .gridBody => ._gridBody_fdscc1234js
-import styles from './hero.module.css'
 
 const Scroller = component$(() => {
   const outputRef = useSignal<Element>();
@@ -40,15 +35,10 @@ const Scroller = component$(() => {
 export default component$(() => {
   const outputRef = useSignal<Element>();
 
-  useVisibleTask$(({ cleanup }) => {
-    document.body.classList.add(styles.gridBody)
+  useVisibleTask$(() => {
     if (outputRef.value) {
       outputRef.value.classList.add("opacity-100");
     }
-    cleanup(() => {
-      document.body.classList.remove(styles.gridBody)
-
-    })
   });
 
   return (

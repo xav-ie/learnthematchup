@@ -60,7 +60,11 @@ body {
   line-height: inherit;
   background: theme("colors.background.900");
   color: theme("colors.foreground.100");
-  /* overflow-x: hidden; */
+  display: grid;
+  justify-content: center;
+  grid-template-rows: auto minmax(min-content, 1fr) auto;
+  height: 100svh;
+  grid-template-columns: 100%;
 }
 
 h1,
@@ -71,4 +75,8 @@ h5,
 h6,
 .font-koulen {
   font-family: "Koulen";
+}
+
+main {
+  min-height: 100%;
 }
