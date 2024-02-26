@@ -27,7 +27,7 @@ const Scroller = component$(() => {
     <div class={styles.scroller} ref={outputRef} data-animated="true">
       <ul>
         {games.map((game) => (<li key={game}>{game}</li>))}
-        {games.map((game) => (<li key={game} class={styles.scrollerRemoveOnReduceMotion}>{game}</li>))}
+        {games.map((game) => (<li key={game} class={styles.scrollerShowOnAnimate}>{game}</li>))}
       </ul>
     </div>
   );
@@ -57,7 +57,7 @@ export default component$(() => {
           Your go-to <span class="highlight">source</span> for game matchup{" "}
           <span class="highlight">insights</span>.
         </h1>
-        <p>SSBU for now, more games coming soon!</p>
+        <p class="text-center">SSBU for now, more games coming soon!</p>
         <Link href="/games/ssbu" class="button button-dark">
           Explore Matchups
         </Link>

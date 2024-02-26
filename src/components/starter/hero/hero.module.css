@@ -9,10 +9,11 @@
 }
 
 .scroller ul {
-  @apply flex w-full list-none flex-wrap py-4;
+  @apply flex w-full list-none flex-wrap p-4;
   --item-gap: 1rem;
   --item-gap-half: calc(var(--item-gap) / 2);
   gap: var(--item-gap);
+  justify-content: center;
 }
 
 .scroller[data-animated="true"] ul {
@@ -32,7 +33,10 @@
   }
 }
 
-.scroller[data-animated="true"] .scrollerRemoveOnReduceMotion {
+.scroller .scrollerShowOnAnimate {
   display: none;
+}
+.scroller[data-animated="true"] .scrollerShowOnAnimate {
+  display: inline;
 }
 
