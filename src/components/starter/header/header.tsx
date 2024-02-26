@@ -5,8 +5,8 @@ import { Link, useLocation } from "@builder.io/qwik-city";
 const ComingSoonLink = component$(() => {
   return (
     <a
-      onClick$={(e) => {
-        e.stopPropagation();
+      preventdefault: click
+      onClick$={() => {
         alert("You will have to wait a little while before I get to this!");
       }}
       href="#soon"
