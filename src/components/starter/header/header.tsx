@@ -60,12 +60,6 @@ export default component$(() => {
               <GameLink url="ssbu">SSBU</GameLink>
             </li>
             <li>
-              <ComingSoonLink>Tekken 7</ComingSoonLink>
-            </li>
-            <li>
-              <ComingSoonLink>Nick All Stars</ComingSoonLink>
-            </li>
-            <li>
               <ComingSoonLink>More games</ComingSoonLink>
             </li>
           </ul>
