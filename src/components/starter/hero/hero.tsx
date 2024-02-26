@@ -1,5 +1,6 @@
-import { component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
+import { component$, useSignal, useVisibleTask$, useStyles$ } from "@builder.io/qwik";
 import { Link } from "@builder.io/qwik-city";
+import styles from './hero.module.css'
 
 const Scroller = component$(() => {
   const outputRef = useSignal<Element>();
@@ -30,7 +31,7 @@ const Scroller = component$(() => {
   });
 
   return (
-    <div class="scroller" ref={outputRef}>
+    <div class={styles.scroller} ref={outputRef}>
       <ul>
         {games.map((game) => (<li key={game}>{game}</li>))}
       </ul>
@@ -39,6 +40,7 @@ const Scroller = component$(() => {
 });
 
 export default component$(() => {
+  useStyles$(styles)
   const outputRef = useSignal<Element>();
 
   useVisibleTask$(() => {
