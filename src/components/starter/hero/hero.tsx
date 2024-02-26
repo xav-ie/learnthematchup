@@ -16,6 +16,17 @@ function getMinContentHeight(element: Element) {
 
 const Scroller = component$(() => {
   const outputRef = useSignal<Element>();
+  const games = [
+    "Smash",
+    "Tekken 7",
+    "Nick All Stars",
+    "Street Fighter V",
+    "Mortal Kombat 11",
+    "Dragon Ball FighterZ",
+    "Soulcalibur VI",
+    "Guilty Gear Strive",
+    "More soon!",
+  ]
   useVisibleTask$(() => {
     if (outputRef.value) {
       if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -27,24 +38,8 @@ const Scroller = component$(() => {
   return (
     <div class="scroller" ref={outputRef}>
       <ul>
-        <li>Smash</li>
-        <li>Tekken 7</li>
-        <li>Nick All Stars</li>
-        <li>Street Fighter V</li>
-        <li>Mortal Kombat 11</li>
-        <li>Dragon Ball FighterZ</li>
-        <li>Soulcalibur VI</li>
-        <li>Guilty Gear Strive</li>
-        <li>More soon!</li>
-        <li>Smash</li>
-        <li>Tekken 7</li>
-        <li>Nick All Stars</li>
-        <li>Street Fighter V</li>
-        <li>Mortal Kombat 11</li>
-        <li>Dragon Ball FighterZ</li>
-        <li>Soulcalibur VI</li>
-        <li>Guilty Gear Strive</li>
-        <li>More soon!</li>
+        {games.map((game) => (<li key={game}>{game}</li>))}
+        {games.map((game) => (<li key={game}>{game}</li>))}
       </ul>
     </div>
   );
