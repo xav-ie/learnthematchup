@@ -17,6 +17,13 @@ const Scroller = component$(() => {
   useVisibleTask$(() => {
     if (outputRef.value) {
       if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        const ul = outputRef.value.querySelector('ul');
+        games.forEach(game => {
+          const li = document.createElement('li');
+          li.textContent = game;
+          ul?.appendChild(li);
+        });
+
         outputRef.value.setAttribute("data-animated", "true");
       }
     }
@@ -25,7 +32,6 @@ const Scroller = component$(() => {
   return (
     <div class="scroller" ref={outputRef}>
       <ul>
-        {games.map((game) => (<li key={game}>{game}</li>))}
         {games.map((game) => (<li key={game}>{game}</li>))}
       </ul>
     </div>
