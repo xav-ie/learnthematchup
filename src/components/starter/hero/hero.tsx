@@ -17,23 +17,17 @@ const Scroller = component$(() => {
   ]
   useVisibleTask$(() => {
     if (outputRef.value) {
-      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        const ul = outputRef.value.querySelector('ul');
-        games.forEach(game => {
-          const li = document.createElement('li');
-          li.textContent = game;
-          ul?.appendChild(li);
-        });
-
-        outputRef.value.setAttribute("data-animated", "true");
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        outputRef.value.setAttribute("data-animated", "false");
       }
     }
   });
 
   return (
-    <div class={styles.scroller} ref={outputRef}>
+    <div class={styles.scroller} ref={outputRef} data-animated="true">
       <ul>
         {games.map((game) => (<li key={game}>{game}</li>))}
+        {games.map((game) => (<li key={game} class={styles.scrollerRemoveOnReduceMotion}>{game}</li>))}
       </ul>
     </div>
   );

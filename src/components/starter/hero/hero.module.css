@@ -31,3 +31,8 @@
     transform: translate3d(calc(-50% - 0.5rem), 0, 0);
   }
 }
+
+.scroller[data-animated="true"] .scrollerRemoveOnReduceMotion {
+  display: none;
+}
+
