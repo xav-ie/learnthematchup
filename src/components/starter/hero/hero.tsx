@@ -38,18 +38,16 @@ export default component$(() => {
 
   useVisibleTask$(() => {
     if (outputRef.value) {
-      outputRef.value.classList.add("opacity-100");
       outputRef.value.classList.remove("opacity-0");
     }
   },
     { strategy: 'document-ready' }
   );
 
-
   return (
     <div
       class={[
-        `flex flex-col h-full items-center justify-between gap-8 pt-4 pb-8 opacity-0 transition-[height,opacity] duration-500`,
+        'flex flex-col h-full items-center justify-between gap-8 pt-4 pb-8 transition-[height,opacity] duration-500', 'opacity-0'
       ]}
       ref={outputRef}
     >
