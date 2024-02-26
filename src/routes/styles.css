@@ -93,6 +93,7 @@ button {
   text-align: center;
   font-weight: 900;
   transition: all 0.2s ease-in-out;
+  user-select: none;
 }
 
 a.button:hover,
