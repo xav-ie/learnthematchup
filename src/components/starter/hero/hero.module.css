@@ -9,17 +9,19 @@
 }
 
 .scroller ul {
-  @apply flex w-full list-none flex-wrap p-4;
+  @apply flex w-full list-none flex-wrap;
   --item-gap: 1rem;
   --item-gap-half: calc(var(--item-gap) / 2);
   gap: var(--item-gap);
   justify-content: center;
+  padding: 1rem;
 }
 
 .scroller[data-animated="true"] ul {
   @apply w-max flex-nowrap justify-start;
   animation: scroll 16s infinite linear;
   animation-fill-mode: forwards;
+  padding: 1rem 0;
   will-change: transform;
 }
 
