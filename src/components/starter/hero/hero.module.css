@@ -1,0 +1,44 @@
+/* Scrolling carousel ----------------------------*/
+.scroller {
+  max-width: min(100%, 800px);
+}
+
+.scroller[data-animated="true"] {
+  overflow: hidden;
+  mask: linear-gradient(90deg, transparent, white 20% 80%, transparent);
+}
+
+.scroller ul {
+  @apply flex w-full list-none flex-wrap;
+  --item-gap: 1rem;
+  --item-gap-half: calc(var(--item-gap) / 2);
+  gap: var(--item-gap);
+  justify-content: center;
+  padding: 1rem;
+}
+
+.scroller[data-animated="true"] ul {
+  @apply w-max flex-nowrap justify-start;
+  animation: scroll 16s infinite linear;
+  animation-fill-mode: forwards;
+  padding: 1rem 0;
+  will-change: transform;
+}
+
+.scroller ul li {
+  @apply whitespace-nowrap rounded bg-foregroundAccent-500 p-2 font-bold text-backgroundAccent-400;
+}
+
+@keyframes scroll {
+  to {
+    transform: translate3d(calc(-50% - 0.5rem), 0, 0);
+  }
+}
+
+.scroller .scrollerShowOnAnimate {
+  display: none;
+}
+.scroller[data-animated="true"] .scrollerShowOnAnimate {
+  display: inline;
+}
+

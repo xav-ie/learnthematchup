@@ -5,8 +5,8 @@ import { Link, useLocation } from "@builder.io/qwik-city";
 const ComingSoonLink = component$(() => {
   return (
     <a
-      onClick$={(e) => {
-        e.stopPropagation();
+      preventdefault: click
+      onClick$={() => {
         alert("You will have to wait a little while before I get to this!");
       }}
       href="#soon"
@@ -58,12 +58,6 @@ export default component$(() => {
           <ul class="flex flex-col gap-4 p-0">
             <li>
               <GameLink url="ssbu">SSBU</GameLink>
-            </li>
-            <li>
-              <ComingSoonLink>Tekken 7</ComingSoonLink>
-            </li>
-            <li>
-              <ComingSoonLink>Nick All Stars</ComingSoonLink>
             </li>
             <li>
               <ComingSoonLink>More games</ComingSoonLink>
